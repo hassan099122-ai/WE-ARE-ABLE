@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- WEBSITE TITLE -->
+    <title>WE ARE ABLE</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            color: #222;
+            min-height: 100vh;
+        }
+
+        header {
+            background: #1f6f8b;
+            color: white;
+            text-align: center;
+            padding: 55px 20px;
+        }
+
+        header h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            font-size: 19px;
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 45px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #1f6f8b;
+            margin-bottom: 15px;
+        }
+
+        p {
+            line-height: 1.7;
+        }
+
+        form {
+            margin-top: 25px;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 7px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ccc;
+            border-radius: 9px;
+            font-size: 16px;
+            font-family: inherit;
+        }
+
+        textarea {
+            min-height: 160px;
+            resize: vertical;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 9px;
+            background: #1f6f8b;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 34px;
+            }
+
+            .card {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>WE ARE ABLE</h1>
+
+    <p>
+        Empowering people with disabilities by providing
+        opportunities, skills and sources of income.
+    </p>
+</header>
+
+<div class="container">
+
+    <section class="card">
+        <h2>Our Mission</h2>
+
+        <p>
+            We believe that everyone has abilities, talents and
+            something valuable to contribute. Our goal is to help
+            people with disabilities develop useful skills and
+            create opportunities to earn an income through their
+            own products and talents.
+        </p>
+    </section>
+
+    <section class="card">
+        <h2>Get Involved</h2>
+
+        <p>
+            Have an idea, want to support our project, or would
+            like to share your thoughts? Send us a message below.
+        </p>
+
+        <!-- MESSAGE FORM -->
+        <form
+            action="https://formsubmit.co/Hassanawwed50@gmail.com"
+            method="POST"
+        >
+
+            <!-- Email subject -->
+            <input
+                type="hidden"
+                name="_subject"
+                value="WE ARE ABLE - New Message"
+            >
+
+            <!-- Email template -->
+            <input
+                type="hidden"
+                name="_template"
+                value="table"
+            >
+
+            <!-- Spam protection -->
+            <input
+                type="text"
+                name="_honey"
+                style="display:none"
+            >
+
+            <label for="name">Your Name</label>
+            <input
+                id="name"
+                type="text"
+                name="name"
+                placeholder="Enter your name"
+                required
+            >
+
+            <label for="email">Your Email</label>
+            <input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+            >
+
+            <label for="message">Your Message</label>
+            <textarea
+                id="message"
+                name="message"
+                placeholder="Write your message here..."
+                required
+            ></textarea>
+
+            <button type="submit">
+                SEND MESSAGE
+            </button>
+
+        </form>
+    </section>
+
+</div>
+
+<footer>
+    © 2026 WE ARE ABLE
+</footer>
+
+</body>
+</html>
