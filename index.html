@@ -1,277 +1,1174 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>WE ARE ABLE</title>
 
+
     <style>
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+
         body {
+
             font-family: Arial, Helvetica, sans-serif;
+
             background: #f4f8fb;
+
             color: #222;
+
         }
 
-        /* HEADER */
+
+        /* ================= HEADER ================= */
+
         header {
-            background: linear-gradient(135deg, #2563eb, #7c3aed);
+
+            background:
+            linear-gradient(
+                135deg,
+                #2563eb,
+                #7c3aed
+            );
+
             color: white;
+
             text-align: center;
+
             padding: 70px 20px;
+
         }
+
 
         header h1 {
+
             font-size: 52px;
+
             letter-spacing: 3px;
+
             margin-bottom: 20px;
+
         }
+
 
         header p {
+
             font-size: 20px;
-            max-width: 700px;
+
+            max-width: 750px;
+
             margin: auto;
+
             line-height: 1.6;
+
         }
 
-        /* MAIN */
-        main {
-            max-width: 1000px;
-            margin: 45px auto;
-            padding: 0 20px;
+
+        /* ================= NAVIGATION ================= */
+
+        nav {
+
+            background: white;
+
+            padding: 15px;
+
+            text-align: center;
+
+            box-shadow:
+            0 3px 10px rgba(0,0,0,0.08);
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
         }
+
+
+        nav a {
+
+            text-decoration: none;
+
+            color: #2563eb;
+
+            font-weight: bold;
+
+            margin: 0 15px;
+
+        }
+
+
+        nav a:hover {
+
+            color: #7c3aed;
+
+        }
+
+
+        /* ================= MAIN ================= */
+
+        main {
+
+            max-width: 1100px;
+
+            margin: 45px auto;
+
+            padding: 0 20px;
+
+        }
+
 
         .card {
+
             background: white;
+
             padding: 35px;
+
             margin-bottom: 30px;
+
             border-radius: 18px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+
+            box-shadow:
+            0 5px 20px rgba(0,0,0,0.08);
+
         }
+
 
         .card h2 {
+
             color: #2563eb;
+
             font-size: 30px;
+
             margin-bottom: 15px;
+
         }
+
 
         .card p {
+
             font-size: 17px;
+
             line-height: 1.8;
+
         }
 
-        /* MISSION BOXES */
+
+        /* ================= MISSION ================= */
+
         .boxes {
+
             display: flex;
+
             gap: 20px;
+
             margin-top: 25px;
+
             flex-wrap: wrap;
+
         }
+
 
         .box {
+
             flex: 1;
+
             min-width: 220px;
+
             background: #eef4ff;
+
             padding: 25px;
+
             border-radius: 15px;
+
             text-align: center;
+
         }
+
 
         .box h3 {
+
             color: #7c3aed;
+
             margin-bottom: 10px;
+
         }
 
-        /* FORM */
-        form {
+
+        /* ================= PRODUCTS ================= */
+
+        .products {
+
+            display: grid;
+
+            grid-template-columns:
+            repeat(3, 1fr);
+
+            gap: 20px;
+
             margin-top: 25px;
+
         }
+
+
+        .product {
+
+            background: #eef4ff;
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            text-align: center;
+
+            transition: 0.2s;
+
+        }
+
+
+        .product:hover {
+
+            transform: translateY(-4px);
+
+            box-shadow:
+            0 6px 15px rgba(0,0,0,0.08);
+
+        }
+
+
+        .product h3 {
+
+            color: #2563eb;
+
+            font-size: 21px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .product p {
+
+            font-size: 15px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        /* ================= BUTTON ================= */
+
+        .cart-button {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #2563eb;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+        }
+
+
+        .cart-button:hover {
+
+            background: #1d4ed8;
+
+        }
+
+
+        /* ================= REQUEST CART ================= */
+
+        #cart {
+
+            background: #eef4ff;
+
+        }
+
+
+        .cart-item {
+
+            background: white;
+
+            padding: 14px;
+
+            margin-bottom: 10px;
+
+            border-radius: 10px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+        .remove-button {
+
+            border: none;
+
+            background: #ef4444;
+
+            color: white;
+
+            padding: 6px 10px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+        }
+
+
+        .remove-button:hover {
+
+            background: #dc2626;
+
+        }
+
+
+        .clear-button {
+
+            margin-top: 15px;
+
+            padding: 10px 18px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #555;
+
+            color: white;
+
+            cursor: pointer;
+
+        }
+
+
+        .request-button {
+
+            display: block;
+
+            width: 100%;
+
+            margin-top: 20px;
+
+            padding: 16px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #7c3aed;
+
+            color: white;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+        }
+
+
+        .request-button:hover {
+
+            background: #6d28d9;
+
+        }
+
+
+        /* ================= DONATE ================= */
+
+        .donate-button {
+
+            display: block;
+
+            width: 250px;
+
+            margin: 25px auto 0;
+
+            padding: 16px;
+
+            border-radius: 10px;
+
+            background: #7c3aed;
+
+            color: white;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            text-align: center;
+
+            text-decoration: none;
+
+        }
+
+
+        .donate-button:hover {
+
+            background: #6d28d9;
+
+        }
+
+
+        /* ================= FORM ================= */
+
+        form {
+
+            margin-top: 25px;
+
+        }
+
 
         label {
+
             display: block;
+
             font-weight: bold;
+
             margin: 15px 0 7px;
+
         }
+
 
         input,
         textarea {
+
             width: 100%;
+
             padding: 14px;
+
             border: 1px solid #ccc;
+
             border-radius: 10px;
+
             font-size: 16px;
-            font-family: Arial, Helvetica, sans-serif;
+
+            font-family:
+            Arial, Helvetica, sans-serif;
+
         }
 
+
         textarea {
+
             height: 160px;
+
             resize: vertical;
+
         }
+
 
         input:focus,
         textarea:focus {
+
             outline: none;
+
             border-color: #2563eb;
+
         }
 
-        button {
+
+        .send-button {
+
             width: 100%;
+
             margin-top: 20px;
+
             padding: 16px;
+
             border: none;
+
             border-radius: 10px;
+
             background: #2563eb;
+
             color: white;
+
             font-size: 18px;
+
             font-weight: bold;
+
             cursor: pointer;
+
         }
 
-        button:hover {
+
+        .send-button:hover {
+
             background: #1d4ed8;
+
         }
 
-        /* FOOTER */
+
+        /* ================= FOOTER ================= */
+
         footer {
+
             background: #172033;
+
             color: white;
+
             text-align: center;
+
             padding: 25px;
+
             margin-top: 50px;
+
         }
 
-        /* PHONE */
+
+        footer p {
+
+            margin: 5px;
+
+        }
+
+
+        /* ================= TABLET ================= */
+
+        @media (max-width: 800px) {
+
+            .products {
+
+                grid-template-columns:
+                repeat(2, 1fr);
+
+            }
+
+        }
+
+
+        /* ================= PHONE ================= */
+
         @media (max-width: 600px) {
 
             header {
+
                 padding: 55px 20px;
+
             }
+
 
             header h1 {
+
                 font-size: 36px;
+
             }
+
 
             header p {
+
                 font-size: 17px;
+
             }
+
+
+            .products {
+
+                grid-template-columns: 1fr;
+
+            }
+
 
             .card {
+
                 padding: 25px 20px;
+
             }
 
-            .card h2 {
-                font-size: 25px;
+
+            nav a {
+
+                margin: 0 6px;
+
+                font-size: 14px;
+
             }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <!-- HEADER -->
+
+    <!-- ================= HEADER ================= -->
+
     <header>
+
         <h1>WE ARE ABLE</h1>
 
         <p>
-            Empowering people with disabilities through skills,
-            opportunities and sustainable sources of income.
+
+            Empowering people with disabilities
+            through skills, opportunities and
+            sustainable sources of income.
+
         </p>
+
     </header>
+
+
+    <!-- ================= NAVIGATION ================= -->
+
+    <nav>
+
+        <a href="#mission">
+            Mission
+        </a>
+
+        <a href="#products">
+            Products
+        </a>
+
+        <a href="#cart">
+            🛒 Requests
+        </a>
+
+        <a href="#donate">
+            ❤️ Donate
+        </a>
+
+        <a href="#contact">
+            Contact
+        </a>
+
+    </nav>
 
 
     <main>
 
-        <!-- ABOUT -->
-        <section class="card">
-            <h2>Our Mission</h2>
+
+        <!-- ================= MISSION ================= -->
+
+        <section
+            class="card"
+            id="mission"
+        >
+
+            <h2>
+                Our Mission
+            </h2>
 
             <p>
-                We believe that everyone has abilities, talents and
-                something valuable to contribute. WE ARE ABLE aims to
-                support people with disabilities by helping them learn
-                useful skills, create products and build opportunities
-                for a better and more independent future.
+
+                We believe that everyone has
+                abilities, talents and something
+                valuable to contribute.
+
+                WE ARE ABLE aims to support
+                people with disabilities by
+                helping them learn useful skills,
+                create products and build
+                opportunities for a better and
+                more independent future.
+
             </p>
+
         </section>
 
 
-        <!-- WHAT WE DO -->
+        <!-- ================= WHAT WE DO ================= -->
+
         <section class="card">
-            <h2>What We Do</h2>
+
+            <h2>
+                What We Do
+            </h2>
+
 
             <div class="boxes">
 
+
                 <div class="box">
-                    <h3>Learn Skills</h3>
+
+                    <h3>
+                        Learn Skills
+                    </h3>
 
                     <p>
-                        We provide opportunities to learn practical
-                        and useful skills.
+
+                        We provide opportunities
+                        to learn practical and
+                        useful skills.
+
                     </p>
+
                 </div>
 
 
                 <div class="box">
-                    <h3>Create Products</h3>
+
+                    <h3>
+                        Create Products
+                    </h3>
 
                     <p>
-                        Participants can use their skills to create
-                        products and show their abilities.
+
+                        Participants use their
+                        skills to create unique
+                        products and artwork.
+
                     </p>
+
                 </div>
 
 
                 <div class="box">
-                    <h3>Earn Income</h3>
+
+                    <h3>
+                        Create Opportunities
+                    </h3>
 
                     <p>
-                        We help create opportunities to sell products
-                        and generate a source of income.
+
+                        We help create opportunities
+                        for participants to showcase
+                        and sell their creations.
+
                     </p>
+
                 </div>
+
 
             </div>
+
         </section>
 
 
-        <!-- GET INVOLVED -->
-        <section class="card">
+        <!-- ================= PRODUCTS ================= -->
 
-            <h2>Get Involved</h2>
+        <section
+            class="card"
+            id="products"
+        >
+
+            <h2>
+                Our Products
+            </h2>
 
             <p>
-                Would you like to support our project, share an idea,
-                or learn more about WE ARE ABLE? Send us a message.
+
+                Discover unique creations and
+                artwork made by talented people
+                through WE ARE ABLE.
+
             </p>
 
 
-            <!-- EMAIL FORM -->
+            <div class="products">
+
+
+                <!-- PAINTINGS -->
+
+                <div class="product">
+
+                    <h3>
+                        🎨 Paintings & Artwork
+                    </h3>
+
+                    <p>
+
+                        Original paintings and
+                        creative artwork made by
+                        our talented participants.
+
+                    </p>
+
+                    <button
+                        class="cart-button"
+                        onclick="addToCart(
+                        'Paintings & Artwork'
+                        )"
+                    >
+
+                        🛒 Add to Request
+
+                    </button>
+
+                </div>
+
+
+                <!-- HANDMADE CRAFTS -->
+
+                <div class="product">
+
+                    <h3>
+                        🧶 Handmade Crafts
+                    </h3>
+
+                    <p>
+
+                        Unique handmade creations
+                        made with creativity,
+                        patience and care.
+
+                    </p>
+
+                    <button
+                        class="cart-button"
+                        onclick="addToCart(
+                        'Handmade Crafts'
+                        )"
+                    >
+
+                        🛒 Add to Request
+
+                    </button>
+
+                </div>
+
+
+                <!-- HOME DECORATIONS -->
+
+                <div class="product">
+
+                    <h3>
+                        🏠 Home Decorations
+                    </h3>
+
+                    <p>
+
+                        Creative handmade decorations
+                        to bring something special
+                        to your home.
+
+                    </p>
+
+                    <button
+                        class="cart-button"
+                        onclick="addToCart(
+                        'Home Decorations'
+                        )"
+                    >
+
+                        🛒 Add to Request
+
+                    </button>
+
+                </div>
+
+
+                <!-- CANDLES -->
+
+                <div class="product">
+
+                    <h3>
+                        🕯️ Handmade Candles
+                    </h3>
+
+                    <p>
+
+                        Beautiful handmade candles
+                        created with care and
+                        creativity.
+
+                    </p>
+
+                    <button
+                        class="cart-button"
+                        onclick="addToCart(
+                        'Handmade Candles'
+                        )"
+                    >
+
+                        🛒 Add to Request
+
+                    </button>
+
+                </div>
+
+
+                <!-- ACCESSORIES -->
+
+                <div class="product">
+
+                    <h3>
+                        ✨ Handmade Accessories
+                    </h3>
+
+                    <p>
+
+                        Creative accessories and
+                        handmade items made by
+                        our participants.
+
+                    </p>
+
+                    <button
+                        class="cart-button"
+                        onclick="addToCart(
+                        'Handmade Accessories'
+                        )"
+                    >
+
+                        🛒 Add to Request
+
+                    </button>
+
+                </div>
+
+
+                <!-- PERSONALIZED GIFTS -->
+
+                <div class="product">
+
+                    <h3>
+                        🎁 Personalized Gifts
+                    </h3>
+
+                    <p>
+
+                        Special handmade gifts
+                        for birthdays, celebrations
+                        and special occasions.
+
+                    </p>
+
+                    <button
+                        class="cart-button"
+                        onclick="addToCart(
+                        'Personalized Gifts'
+                        )"
+                    >
+
+                        🛒 Add to Request
+
+                    </button>
+
+                </div>
+
+
+                <!-- HANDMADE BAGS -->
+
+                <div class="product">
+
+                    <h3>
+                        👜 Handmade Bags
+                    </h3>
+
+                    <p>
+
+                        Handmade bags and useful
+                        items created by our
+                        talented participants.
+
+                    </p>
+
+                    <button
+                        class="cart-button"
+                        onclick="addToCart(
+                        'Handmade Bags'
+                        )"
+                    >
+
+                        🛒 Add to Request
+
+                    </button>
+
+                </div>
+
+
+                <!-- OTHER CREATIONS -->
+
+                <div class="product">
+
+                    <h3>
+                        🌟 Other Creations
+                    </h3>
+
+                    <p>
+
+                        Explore other unique
+                        creations made by the
+                        people in our community.
+
+                    </p>
+
+                    <button
+                        class="cart-button"
+                        onclick="addToCart(
+                        'Other Creations'
+                        )"
+                    >
+
+                        🛒 Add to Request
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= REQUEST CART ================= -->
+
+        <section
+            class="card"
+            id="cart"
+        >
+
+            <h2>
+                Your Request 🛒
+            </h2>
+
+
+            <p>
+
+                Select the creations you are
+                interested in and send us your
+                request.
+
+            </p>
+
+
+            <br>
+
+
+            <div id="cart-items">
+
+                <p>
+                    No products selected yet.
+                </p>
+
+            </div>
+
+
+            <button
+                class="clear-button"
+                onclick="clearCart()"
+            >
+
+                Clear Selection
+
+            </button>
+
+
+            <button
+                class="request-button"
+                onclick="sendRequest()"
+            >
+
+                📧 SEND REQUEST
+
+            </button>
+
+        </section>
+
+
+        <!-- ================= DONATE ================= -->
+
+        <section
+            class="card"
+            id="donate"
+        >
+
+            <h2>
+                Support Our Mission ❤️
+            </h2>
+
+
+            <p>
+
+                Your support can help us provide
+                training, materials and opportunities
+                for people with disabilities.
+
+            </p>
+
+
+            <a
+                class="donate-button"
+                href="mailto:Hassanawwed50@gmail.com?subject=WE%20ARE%20ABLE%20-%20Donation"
+            >
+
+                ❤️ DONATE
+
+            </a>
+
+        </section>
+
+
+        <!-- ================= CONTACT ================= -->
+
+        <section
+            class="card"
+            id="contact"
+        >
+
+            <h2>
+                Get Involved
+            </h2>
+
+
+            <p>
+
+                Would you like to support our
+                project, share an idea, or learn
+                more about WE ARE ABLE?
+
+                Send us a message.
+
+            </p>
+
+
             <form
                 action="https://formsubmit.co/Hassanawwed50@gmail.com"
                 method="POST"
             >
 
-                <!-- Email subject -->
+
                 <input
                     type="hidden"
                     name="_subject"
                     value="WE ARE ABLE - New Message"
                 >
 
-                <!-- Email format -->
+
                 <input
                     type="hidden"
                     name="_template"
                     value="table"
                 >
 
-                <!-- Prevent spam -->
+
                 <input
                     type="text"
                     name="_honey"
@@ -282,6 +1179,7 @@
                 <label for="name">
                     Your Name
                 </label>
+
 
                 <input
                     id="name"
@@ -296,6 +1194,7 @@
                     Your Email
                 </label>
 
+
                 <input
                     id="email"
                     type="email"
@@ -309,6 +1208,7 @@
                     Your Message
                 </label>
 
+
                 <textarea
                     id="message"
                     name="message"
@@ -317,9 +1217,15 @@
                 ></textarea>
 
 
-                <button type="submit">
+                <button
+                    class="send-button"
+                    type="submit"
+                >
+
                     SEND MESSAGE
+
                 </button>
+
 
             </form>
 
@@ -328,10 +1234,165 @@
     </main>
 
 
-    <!-- FOOTER -->
+    <!-- ================= FOOTER ================= -->
+
     <footer>
-        <p>© 2026 WE ARE ABLE</p>
+
+        <p>
+            © 2026 WE ARE ABLE
+        </p>
+
+        <p>
+            Empowering abilities.
+            Creating opportunities.
+        </p>
+
     </footer>
 
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        let cart = [];
+
+
+        /* ADD PRODUCT */
+
+        function addToCart(name) {
+
+            cart.push(name);
+
+            updateCart();
+
+            alert(
+                name +
+                " has been added to your request!"
+            );
+
+        }
+
+
+        /* UPDATE CART */
+
+        function updateCart() {
+
+            const cartItems =
+                document.getElementById(
+                    "cart-items"
+                );
+
+
+            if (cart.length === 0) {
+
+                cartItems.innerHTML =
+                    "<p>No products selected yet.</p>";
+
+                return;
+
+            }
+
+
+            let html = "";
+
+
+            cart.forEach(
+                function(item, index) {
+
+                    html += `
+
+                        <div class="cart-item">
+
+                            <span>
+                                ${item}
+                            </span>
+
+                            <button
+                                class="remove-button"
+                                onclick="removeItem(${index})"
+                            >
+                                Remove
+                            </button>
+
+                        </div>
+
+                    `;
+
+                }
+            );
+
+
+            cartItems.innerHTML = html;
+
+        }
+
+
+        /* REMOVE PRODUCT */
+
+        function removeItem(index) {
+
+            cart.splice(index, 1);
+
+            updateCart();
+
+        }
+
+
+        /* CLEAR CART */
+
+        function clearCart() {
+
+            cart = [];
+
+            updateCart();
+
+        }
+
+
+        /* SEND REQUEST */
+
+        function sendRequest() {
+
+            if (cart.length === 0) {
+
+                alert(
+                    "Please select at least one product first."
+                );
+
+                return;
+
+            }
+
+
+            let products =
+                cart.join(", ");
+
+
+            let subject =
+                "WE ARE ABLE - Product Request";
+
+
+            let body =
+                "Hello WE ARE ABLE,%0D%0A%0D%0A" +
+                "I am interested in the following creations:%0D%0A%0D%0A" +
+                products +
+                "%0D%0A%0D%0A" +
+                "Please contact me with more information.%0D%0A%0D%0A" +
+                "Thank you.";
+
+
+            window.location.href =
+                "mailto:Hassanawwed50@gmail.com" +
+                "?subject=" +
+                encodeURIComponent(subject) +
+                "&body=" +
+                body;
+
+        }
+
+    </script>
+
+
 </body>
-                   </html>
+
+                </html>
