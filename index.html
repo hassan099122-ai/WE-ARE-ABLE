@@ -1,595 +1,1028 @@
-    <style>
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        scroll-behavior: smooth;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-        background: #f4f9ff;
-        color: #26364a;
-        line-height: 1.6;
-    }
+<title>WE ARE ABLE</title>
 
-    /* HEADER */
-    header {
-        background: linear-gradient(135deg, #0066cc, #00a8e8);
-        color: white;
-        text-align: center;
-        padding: 70px 20px;
-    }
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f9ff;
+    color: #18324a;
+}
+
+header {
+    background: linear-gradient(135deg, #0066cc, #00a8e8);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+header h1 {
+    font-size: 48px;
+    margin: 0;
+}
+
+header p {
+    font-size: 20px;
+}
+
+nav {
+    background: white;
+    padding: 15px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 10px #ccc;
+}
+
+nav a {
+    text-decoration: none;
+    color: #0066cc;
+    font-weight: bold;
+    margin: 8px;
+}
+
+section {
+    padding: 50px 8%;
+}
+
+h2 {
+    text-align: center;
+    color: #0066cc;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 3px 15px #dce8f2;
+    max-width: 900px;
+    margin: auto;
+}
+
+.ceo-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 4px solid #0066cc;
+}
+
+/* STORY */
+
+.story {
+    line-height: 1.8;
+    font-size: 17px;
+}
+
+/* CREATORS */
+
+.creators {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.creator {
+    background: white;
+    width: 250px;
+    padding: 25px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 3px 15px #dce8f2;
+}
+
+.creator span {
+    font-size: 50px;
+}
+
+/* SHOP */
+
+.search {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.search input {
+    width: 90%;
+    max-width: 500px;
+    padding: 14px;
+    border: 2px solid #b9def5;
+    border-radius: 25px;
+    font-size: 16px;
+}
+
+.categories {
+    text-align: center;
+    margin: 20px;
+}
+
+.categories button {
+    border: none;
+    background: #dff2ff;
+    color: #0066cc;
+    padding: 10px 18px;
+    margin: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.categories button:hover {
+    background: #0066cc;
+    color: white;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.product {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 3px 15px #dce8f2;
+    text-align: center;
+}
+
+.product-picture {
+    height: 180px;
+    background: #e8f6ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 65px;
+    overflow: hidden;
+}
+
+.product-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-info h3 {
+    color: #0066cc;
+}
+
+.product button {
+    background: #0066cc;
+    color: white;
+    border: none;
+    padding: 11px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.product button:hover {
+    background: #004c99;
+}
+
+/* CART */
+
+.cart {
+    max-width: 700px;
+    margin: auto;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+
+.cart button {
+    background: #0066cc;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* FORMS */
+
+form {
+    max-width: 700px;
+    margin: auto;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 13px;
+    margin: 8px 0 15px;
+    border: 1px solid #c9dce9;
+    border-radius: 10px;
+    font-family: Arial;
+}
+
+textarea {
+    height: 120px;
+}
+
+.submit {
+    background: #0066cc;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 25px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* INSTAGRAM */
+
+.instagram {
+    background: linear-gradient(135deg, #005bea, #00c6fb);
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+    padding: 45px 20px;
+}
+
+.instagram a {
+    display: inline-block;
+    background: white;
+    color: #0066cc;
+    padding: 13px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* FAQ */
+
+details {
+    background: white;
+    padding: 18px;
+    margin: 10px auto;
+    max-width: 800px;
+    border-radius: 10px;
+}
+
+summary {
+    color: #0066cc;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* FOOTER */
+
+footer {
+    background: #082b49;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+footer a {
+    color: #5bc8ff;
+}
+
+@media(max-width:600px) {
 
     header h1 {
-        font-size: 55px;
-        margin-bottom: 10px;
+        font-size: 35px;
     }
 
-    header p {
-        font-size: 21px;
-    }
-
-    /* NAVIGATION */
-    nav {
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        background: white;
-        padding: 14px;
-        text-align: center;
-        box-shadow: 0 3px 15px rgba(0, 70, 140, 0.12);
+    section {
+        padding: 40px 5%;
     }
 
     nav a {
-        color: #26364a;
-        text-decoration: none;
-        margin: 7px 10px;
-        font-weight: bold;
         display: inline-block;
     }
 
-    nav a:hover {
-        color: #0077cc;
-    }
+}
+</style>
+</head>
 
-    /* GENERAL */
-    section {
-        padding: 70px 8%;
-    }
+<body>
 
-    .section-title {
-        text-align: center;
-        font-size: 35px;
-        margin-bottom: 35px;
-        color: #0077cc;
-    }
+<header>
+    <h1>❤️ WE ARE ABLE</h1>
+    <p>Different abilities. Equal opportunities.</p>
+</header>
 
-    .card {
-        background: white;
-        padding: 30px;
-        border-radius: 20px;
-        box-shadow: 0 5px 20px rgba(0, 90, 160, 0.08);
-        margin-bottom: 25px;
-    }
+<nav>
+    <a href="#mission">🌟 Mission</a>
+    <a href="#story">❤️ Story</a>
+    <a href="#creators">♿ Creators</a>
+    <a href="#shop">🛍️ Shop</a>
+    <a href="#cart">🛒 Cart</a>
+    <a href="#checkout">📦 Checkout</a>
+    <a href="#instagram">📸 Instagram</a>
+    <a href="#faq">❓ FAQ</a>
+    <a href="#contact">📩 Contact</a>
+</nav>
 
-    /* MISSION */
-    .mission {
-        text-align: center;
-        max-width: 900px;
-        margin: auto;
-        font-size: 19px;
-    }
+<section id="mission">
 
-    /* CEO */
-    .ceo {
-        text-align: center;
-    }
+    <h2>🌟 OUR MISSION</h2>
 
-    .ceo-box {
-        max-width: 500px;
-        margin: auto;
-        background: white;
-        padding: 35px;
-        border-radius: 25px;
-        box-shadow: 0 5px 20px rgba(0, 90, 160, 0.1);
-        text-align: center;
-    }
+    <div class="card">
 
-    .ceo-avatar {
-        width: 130px;
-        height: 130px;
-        margin: auto;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #0077cc, #4fc3f7);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 60px;
-    }
+        <p>
+            WE ARE ABLE is a social project that helps people with
+            disabilities learn practical skills, express their creativity
+            and create products that can provide income opportunities.
+        </p>
 
-    .ceo-box h3 {
-        margin-top: 15px;
-        font-size: 25px;
-        color: #0066cc;
-    }
+        <p>
+            We believe everyone has talents and abilities that deserve
+            to be recognized. ❤️
+        </p>
 
-    /* STORY */
-    .story {
-        max-width: 900px;
-        margin: auto;
-        font-size: 18px;
-    }
+    </div>
 
-    /* CREATORS */
-    .creator-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 25px;
-    }
+</section>
 
-    .creator {
-        background: white;
-        padding: 30px;
-        text-align: center;
-        border-radius: 20px;
-        box-shadow: 0 5px 18px rgba(0, 90, 160, 0.08);
-    }
+<section>
 
-    .creator-icon {
-        font-size: 55px;
-        margin-bottom: 15px;
-    }
+    <h2>👔 CEO</h2>
 
-    .creator h3 {
-        color: #0077cc;
-    }
+    <div class="card" style="text-align:center;">
 
-    /* SHOP */
-    .shop-controls {
-        text-align: center;
-        margin-bottom: 35px;
-    }
+        <img src="ceo-hasan.jpg" alt="Hasan Awwad" class="ceo-img">
 
-    #search {
-        width: min(600px, 90%);
-        padding: 15px 20px;
-        border: 2px solid #b9e3ff;
-        border-radius: 30px;
-        font-size: 16px;
-        outline: none;
-    }
+        <h3>HASAN AWWAD</h3>
 
-    #search:focus {
-        border-color: #0077cc;
-    }
+        <p>Founder & CEO of WE ARE ABLE</p>
 
-    .filters {
-        margin-top: 20px;
-    }
+    </div>
 
-    .filter-btn {
-        border: none;
-        background: #dff2ff;
-        color: #005b99;
-        padding: 10px 18px;
-        margin: 5px;
-        border-radius: 25px;
-        cursor: pointer;
-        font-weight: bold;
-    }
+</section>
 
-    .filter-btn:hover,
-    .filter-btn.active {
-        background: #0077cc;
-        color: white;
-    }
+<section id="story">
 
-    .products {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 25px;
-    }
+    <h2>❤️ OUR STORY</h2>
 
-    .product {
-        background: white;
-        border-radius: 22px;
-        overflow: hidden;
-        box-shadow: 0 5px 20px rgba(0, 90, 160, 0.08);
-        transition: 0.3s;
-        position: relative;
-    }
+    <div class="card story">
 
-    .product:hover {
-        transform: translateY(-7px);
-        box-shadow: 0 12px 28px rgba(0, 90, 160, 0.15);
-    }
+        <p>
+            This project began with a simple wish: to help people with
+            disabilities learn practical skills and have more opportunities
+            to earn income.
+        </p>
 
-    .featured-badge {
-        position: absolute;
-        top: 12px;
-        left: 12px;
-        background: #0077cc;
-        color: white;
-        padding: 6px 12px;
-        border-radius: 20px;
-        font-size: 12px;
-        font-weight: bold;
-        z-index: 2;
-    }
+        <p>
+            I have seen how difficult it can sometimes be for people to
+            feel accepted and recognized for their abilities.
+        </p>
 
-    .product-image {
-        height: 190px;
-        background: #e8f6ff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-    }
+        <p>
+            One meaningful moment stayed with me: I met a person with a
+            disability who thanked me deeply when I shared this idea.
+            That moment strengthened my belief that opportunity, skills
+            and inclusion can make a real difference.
+        </p>
 
-    .product-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+        <p>
+            That is how <b>WE ARE ABLE</b> was born. ❤️
+        </p>
 
-    .emoji-placeholder {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-        font-size: 70px;
-    }
+    </div>
 
-    .product-content {
-        padding: 22px;
-    }
+</section>
 
-    .product-content h3 {
-        margin-bottom: 8px;
-        color: #26364a;
-    }
+<section id="creators">
 
-    .category {
-        color: #0077cc;
-        font-size: 14px;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
+    <h2>♿ MEET THE CREATORS</h2>
 
-    .product-content p {
-        font-size: 14px;
-        color: #667788;
-        margin-bottom: 15px;
-    }
+    <div class="creators">
 
-    .product-buttons {
-        display: flex;
-        gap: 8px;
-    }
+        <div class="creator">
+            <span>🎨</span>
+            <h3>Artists</h3>
+            <p>Creative people turning ideas into beautiful artwork.</p>
+        </div>
 
-    .btn {
-        border: none;
-        padding: 11px 15px;
-        border-radius: 25px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: 0.2s;
-    }
+        <div class="creator">
+            <span>👜</span>
+            <h3>Handmade Makers</h3>
+            <p>Creators making handmade bags and useful products.</p>
+        </div>
 
-    .btn-primary {
-        background: #0077cc;
-        color: white;
-        flex: 1;
-    }
+        <div class="creator">
+            <span>💡</span>
+            <h3>Creative Minds</h3>
+            <p>People bringing unique ideas and talents to life.</p>
+        </div>
 
-    .btn-primary:hover {
-        background: #005fa3;
-    }
+    </div>
 
-    .btn-secondary {
-        background: #dff2ff;
-        color: #0077cc;
-    }
+</section>
 
-    /* FEATURED */
-    .featured-section {
-        background: #eaf7ff;
-    }
+<section id="shop">
 
-    /* CART */
-    .cart-box {
-        max-width: 900px;
-        margin: auto;
-    }
+    <h2>🛍️ SHOP</h2>
 
-    .cart-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 0;
-        border-bottom: 1px solid #e2edf5;
-        gap: 15px;
-    }
+    <div class="search">
 
-    .cart-item-info {
-        flex: 1;
-    }
+        <input
+            type="text"
+            id="search"
+            placeholder="🔎 Search products..."
+            onkeyup="searchProducts()"
+        >
 
-    .quantity {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
+    </div>
 
-    .quantity button {
-        border: none;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        background: #dff2ff;
-        color: #0066aa;
-        cursor: pointer;
-        font-weight: bold;
-    }
+    <div class="categories">
 
-    .remove-btn {
-        border: none;
-        background: transparent;
-        color: #e74c3c;
-        cursor: pointer;
-        font-weight: bold;
-    }
+        <button onclick="filterProducts('all')">🌟 All</button>
+        <button onclick="filterProducts('bags')">👜 Bags</button>
+        <button onclick="filterProducts('art')">🎨 Art</button>
+        <button onclick="filterProducts('accessories')">📿 Accessories</button>
+        <button onclick="filterProducts('gifts')">🎁 Gifts</button>
 
-    .cart-empty {
-        text-align: center;
-        padding: 25px;
-        color: #777;
-    }
+    </div>
 
-    .clear-cart {
-        margin-top: 20px;
-        background: #455a64;
-        color: white;
-    }
+    <div class="products" id="products">
 
-    /* CHECKOUT */
-    .checkout-box {
-        max-width: 800px;
-        margin: auto;
-    }
+        <div class="product" data-category="bags">
 
-    form {
-        display: grid;
-        gap: 15px;
-    }
+            <div class="product-picture">
+                <img src="product-1.jpg" alt="Handmade Bags & Pouches">
+            </div>
 
-    input,
-    textarea,
-    select {
-        width: 100%;
-        padding: 14px;
-        border: 1px solid #cbddea;
-        border-radius: 12px;
-        font-size: 15px;
-        font-family: inherit;
-    }
+            <div class="product-info">
 
-    input:focus,
-    textarea:focus,
-    select:focus {
-        outline: none;
-        border-color: #0077cc;
-        box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.1);
-    }
+                <h3>Handmade Bags</h3>
 
-    textarea {
-        min-height: 120px;
-        resize: vertical;
-    }
+                <p>Beautiful handmade bags.</p>
 
-    label {
-        font-weight: bold;
-    }
+                <button onclick="addToCart('Handmade Bags')">
+                    🛒 Add to Cart
+                </button>
 
-    .payment-options {
-        display: grid;
-        gap: 10px;
-        margin-top: 10px;
-    }
+            </div>
 
-    .payment-option {
-        background: #eef9ff;
-        padding: 15px;
-        border-radius: 12px;
-        cursor: pointer;
-    }
+        </div>
 
-    .payment-option input {
-        width: auto;
-        margin-right: 8px;
-    }
+        <div class="product" data-category="bags">
 
-    .send-btn {
-        background: #0077cc;
-        color: white;
-        padding: 15px;
-        border: none;
-        border-radius: 30px;
-        font-size: 17px;
-        font-weight: bold;
-        cursor: pointer;
-    }
+            <div class="product-picture">
+                <img src="product-2.jpg" alt="Handmade Pouches">
+            </div>
 
-    .send-btn:hover {
-        background: #005fa3;
-    }
+            <div class="product-info">
 
-    /* CONFIRMATION */
-    .confirmation {
-        background: #eaf7ff;
-        border: 2px solid #8bd5ff;
-        padding: 25px;
-        border-radius: 18px;
-        margin-top: 25px;
-    }
+                <h3>Handmade Pouches</h3>
 
-    .confirmation h3 {
-        color: #0077cc;
-    }
+                <p>Creative handmade pouches.</p>
 
-    /* INSTAGRAM */
-    .instagram {
-        text-align: center;
-        background: linear-gradient(135deg, #005bea, #00c6fb);
-        color: white;
-        border-radius: 25px;
-        padding: 55px 20px;
-    }
+                <button onclick="addToCart('Handmade Pouches')">
+                    🛒 Add to Cart
+                </button>
 
-    .instagram a {
-        display: inline-block;
-        margin-top: 20px;
-        background: white;
-        color: #0066cc;
-        padding: 14px 25px;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: bold;
-    }
+            </div>
 
-    .instagram a:hover {
-        background: #eaf7ff;
-    }
+        </div>
 
-    /* TESTIMONIALS */
-    .testimonial-box {
-        text-align: center;
-        max-width: 850px;
-        margin: auto;
-    }
+        <div class="product" data-category="art">
 
-    .feedback-note {
-        background: #eef9ff;
-        padding: 25px;
-        border-radius: 18px;
-        margin-bottom: 25px;
-    }
+            <div class="product-picture">🎨</div>
 
-    /* FAQ */
-    .faq {
-        max-width: 900px;
-        margin: auto;
-    }
+            <div class="product-info">
 
-    details {
-        background: white;
-        padding: 20px;
-        margin-bottom: 12px;
-        border-radius: 15px;
-        box-shadow: 0 3px 12px rgba(0, 90, 160, 0.06);
-    }
+                <h3>Handmade Paintings</h3>
 
-    summary {
-        cursor: pointer;
-        font-weight: bold;
-        color: #0077cc;
-    }
+                <p>Unique handmade artwork.</p>
 
-    /* CONTACT */
-    .contact-box {
-        max-width: 700px;
-        margin: auto;
-    }
+                <button onclick="addToCart('Handmade Paintings')">
+                    🛒 Add to Cart
+                </button>
 
-    /* TOAST */
-    #toast {
-        position: fixed;
-        bottom: 25px;
-        right: 25px;
-        background: #0066cc;
-        color: white;
-        padding: 15px 22px;
-        border-radius: 30px;
-        display: none;
-        z-index: 2000;
-    }
+            </div>
 
-    /* MODAL */
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 3000;
-        inset: 0;
-        background: rgba(0, 35, 70, 0.65);
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-    }
+        </div>
 
-    .modal-content {
-        background: white;
-        max-width: 550px;
-        width: 100%;
-        padding: 35px;
-        border-radius: 25px;
-        position: relative;
-    }
+        <div class="product" data-category="art">
 
-    .close-modal {
-        position: absolute;
-        right: 20px;
-        top: 15px;
-        border: none;
-        background: transparent;
-        color: #0077cc;
-        font-size: 30px;
-        cursor: pointer;
-    }
+            <div class="product-picture">🖼️</div>
 
-    /* FOOTER */
-    footer {
-        background: #082b49;
-        color: white;
-        text-align: center;
-        padding: 35px 20px;
-    }
+            <div class="product-info">
 
-    footer a {
-        color: #58c7ff;
-        text-decoration: none;
-    }
+                <h3>Canvas Art</h3>
+
+                <p>Creative canvas creations.</p>
+
+                <button onclick="addToCart('Canvas Art')">
+                    🛒 Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="product" data-category="accessories">
+
+            <div class="product-picture">📿</div>
+
+            <div class="product-info">
+
+                <h3>Handmade Bracelets</h3>
+
+                <p>Beautiful handmade accessories.</p>
+
+                <button onclick="addToCart('Handmade Bracelets')">
+                    🛒 Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="product" data-category="accessories">
+
+            <div class="product-picture">🔑</div>
+
+            <div class="product-info">
+
+                <h3>Handmade Keychains</h3>
+
+                <p>Creative handmade keychains.</p>
+
+                <button onclick="addToCart('Handmade Keychains')">
+                    🛒 Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="product" data-category="gifts">
+
+            <div class="product-picture">🎁</div>
+
+            <div class="product-info">
+
+                <h3>Handmade Gifts</h3>
+
+                <p>Special handmade gift ideas.</p>
+
+                <button onclick="addToCart('Handmade Gifts')">
+                    🛒 Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="product" data-category="gifts">
+
+            <div class="product-picture">📓</div>
+
+            <div class="product-info">
+
+                <h3>Handmade Notebooks</h3>
+
+                <p>Creative notebooks for your ideas.</p>
+
+                <button onclick="addToCart('Handmade Notebooks')">
+                    🛒 Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="product" data-category="accessories">
+
+            <div class="product-picture">✨</div>
+
+            <div class="product-info">
+
+                <h3>Handmade Accessories</h3>
+
+                <p>Unique handmade accessories.</p>
+
+                <button onclick="addToCart('Handmade Accessories')">
+                    🛒 Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="product" data-category="gifts">
+
+            <div class="product-picture">☕</div>
+
+            <div class="product-info">
 
-    /* BACK TO TOP */
-    #topBtn {
-        position: fixed;
-        right: 20px;
-        bottom: 80px;
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        border: none;
-        background: #0077cc;
-        color: white;
-        cursor: pointer;
-        font-size: 20px;
-        display: none;
-        z-index: 1000;
+                <h3>Handmade Mugs</h3>
+
+                <p>Creative handmade mugs.</p>
+
+                <button onclick="addToCart('Handmade Mugs')">
+                    🛒 Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="cart">
+
+    <h2>🛒 CART</h2>
+
+    <div class="card cart">
+
+        <div id="cartItems">
+            Your cart is empty.
+        </div>
+
+        <br>
+
+        <button onclick="clearCart()">
+            🗑️ Clear Cart
+        </button>
+
+    </div>
+
+</section>
+
+<section id="checkout">
+
+    <h2>📦 CHECKOUT</h2>
+
+    <div class="card">
+
+        <form
+            action="https://formsubmit.co/Hassanawwed50@gmail.com"
+            method="POST"
+        >
+
+            <input
+                type="hidden"
+                name="_subject"
+                value="WE ARE ABLE - New Order"
+            >
+
+            <input
+                type="hidden"
+                name="_captcha"
+                value="false"
+            >
+
+            <label>👤 Full Name</label>
+
+            <input
+                type="text"
+                name="Name"
+                placeholder="Your name"
+                required
+            >
+
+            <label>📧 Email</label>
+
+            <input
+                type="email"
+                name="Email"
+                placeholder="Your email"
+                required
+            >
+
+            <label>📱 Phone</label>
+
+            <input
+                type="tel"
+                name="Phone"
+                placeholder="Your phone number"
+                required
+            >
+
+            <label>📍 Address</label>
+
+            <textarea
+                name="Address"
+                placeholder="Delivery address"
+                required
+            ></textarea>
+
+            <label>🛒 Order</label>
+
+            <textarea
+                id="order"
+                name="Order"
+                readonly
+            ></textarea>
+
+            <label>💵 Payment Method</label>
+
+            <select name="Payment Method" required>
+
+                <option value="">
+                    Choose payment method
+                </option>
+
+                <option>
+                    Cash on Delivery
+                </option>
+
+                <option>
+                    Other / Contact Me
+                </option>
+
+            </select>
+
+            <button class="submit" type="submit">
+                ❤️ SEND ORDER
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<section id="instagram">
+
+    <div class="instagram">
+
+        <h2 style="color:white;">
+            📸 FOLLOW WE ARE ABLE
+        </h2>
+
+        <p>
+            Follow our creators and discover our latest creations!
+        </p>
+
+        <a
+            href="https://www.instagram.com/weareable4/"
+            target="_blank"
+        >
+            📸 @weareable4
+        </a>
+
+    </div>
+
+</section>
+
+<section id="faq">
+
+    <h2>❓ FAQ</h2>
+
+    <details>
+        <summary>♿ What is WE ARE ABLE?</summary>
+        <p>
+            A project that creates opportunities for people with
+            disabilities through skills, creativity and handmade products.
+        </p>
+    </details>
+
+    <details>
+        <summary>🛍️ What products do you sell?</summary>
+        <p>
+            Handmade bags, paintings, accessories, gifts, notebooks,
+            mugs, keychains and many other creations.
+        </p>
+    </details>
+
+    <details>
+        <summary>💵 How can I pay?</summary>
+        <p>
+            Cash on Delivery or Other / Contact Me.
+        </p>
+    </details>
+
+    <details>
+        <summary>📸 Where can I follow you?</summary>
+        <p>
+            Follow us on Instagram at @weareable4.
+        </p>
+    </details>
+
+</section>
+
+<section id="contact">
+
+    <h2>📩 CONTACT US</h2>
+
+    <div class="card">
+
+        <form
+            action="https://formsubmit.co/Hassanawwed50@gmail.com"
+            method="POST"
+        >
+
+            <input
+                type="hidden"
+                name="_subject"
+                value="WE ARE ABLE - Contact"
+            >
+
+            <input
+                type="hidden"
+                name="_captcha"
+                value="false"
+            >
+
+            <input
+                type="text"
+                name="Name"
+                placeholder="👤 Your name"
+                required
+            >
+
+            <input
+                type="email"
+                name="Email"
+                placeholder="📧 Your email"
+                required
+            >
+
+            <textarea
+                name="Message"
+                placeholder="💬 Your message"
+                required
+            ></textarea>
+
+            <button class="submit" type="submit">
+                📩 SEND MESSAGE
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <h2 style="color:white;">
+        ❤️ WE ARE ABLE
+    </h2>
+
+    <p>
+        Different abilities. Equal opportunities.
+    </p>
+
+    <p>
+        📸
+        <a href="https://www.instagram.com/weareable4/" target="_blank">
+            @weareable4
+        </a>
+    </p>
+
+    <p>
+        © 2026 WE ARE ABLE
+    </p>
+
+</footer>
+
+<script>
+
+/* CART */
+
+let cart = [];
+
+function addToCart(product) {
+
+    cart.push(product);
+
+    updateCart();
+
+    alert("❤️ " + product + " added to cart!");
+
+}
+
+function updateCart() {
+
+    let cartBox =
+        document.getElementById("cartItems");
+
+    let order =
+        document.getElementById("order");
+
+    if (cart.length === 0) {
+
+        cartBox.innerHTML =
+            "Your cart is empty.";
+
+        order.value =
+            "No products selected.";
+
+        return;
     }
+
+    cartBox.innerHTML =
+        cart.map(function(item, index) {
+
+            return `
+                <div class="cart-item">
+                    <span>🛍️ ${item}</span>
+
+                    <button onclick="removeItem(${index})">
+                        Remove
+                    </button>
+                </div>
+            `;
+
+        }).join("");
+
+    order.value = cart.join("\n");
+
+}
+
+function removeItem(index) {
+
+    cart.splice(index, 1);
+
+    updateCart();
+
+}
+
+function clearCart() {
+
+    cart = [];
+
+    updateCart();
+
+}
+
+
+/* SEARCH */
+
+function searchProducts() {
+
+    let search =
+        document.getElementById("search")
+        .value
+        .toLowerCase();
+
+    let products =
+        document.querySelectorAll(".product");
+
+    products.forEach(function(product) {
+
+        let name =
+            product.innerText.toLowerCase();
+
+        product.style.display =
+            name.includes(search)
+            ? "block"
+            : "none";
+
+    });
+
+}
+
+
+/* CATEGORY FILTER */
+
+function filterProducts(category) {
+
+    let products =
+        document.querySelectorAll(".product");
+
+    products.forEach(function(product) {
+
+        if (
+            category === "all" ||
+            product.dataset.category === category
+        ) {
+
+            product.style.display = "block";
+
+        } else {
+
+            product.style.display = "none";
 
-    @media (max-width: 600px) {
-        header h1 {
-            font-size: 40px;
         }
 
-        section {
-            padding: 50px 5%;
-        }
+    });
 
-        .cart-item {
-            flex-direction: column;
-            align-items: flex-start;
-        }
-    }
-        </style>
+}
+
+</script>
+
+</body>
+</html>
