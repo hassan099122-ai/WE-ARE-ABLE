@@ -1,1723 +1,595 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>WE ARE ABLE</title>
-
     <style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f9ff;
+        color: #26364a;
+        line-height: 1.6;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    /* HEADER */
+    header {
+        background: linear-gradient(135deg, #0066cc, #00a8e8);
+        color: white;
+        text-align: center;
+        padding: 70px 20px;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f7fa;
-            color: #222;
-            min-height: 100vh;
-        }
+    header h1 {
+        font-size: 55px;
+        margin-bottom: 10px;
+    }
 
-        /* ================= HEADER ================= */
+    header p {
+        font-size: 21px;
+    }
 
-        header {
-            background: linear-gradient(135deg, #1f6f8b, #15566d);
-            color: white;
-            text-align: center;
-            padding: 70px 20px;
-        }
+    /* NAVIGATION */
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: white;
+        padding: 14px;
+        text-align: center;
+        box-shadow: 0 3px 15px rgba(0, 70, 140, 0.12);
+    }
 
+    nav a {
+        color: #26364a;
+        text-decoration: none;
+        margin: 7px 10px;
+        font-weight: bold;
+        display: inline-block;
+    }
+
+    nav a:hover {
+        color: #0077cc;
+    }
+
+    /* GENERAL */
+    section {
+        padding: 70px 8%;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 35px;
+        margin-bottom: 35px;
+        color: #0077cc;
+    }
+
+    .card {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 5px 20px rgba(0, 90, 160, 0.08);
+        margin-bottom: 25px;
+    }
+
+    /* MISSION */
+    .mission {
+        text-align: center;
+        max-width: 900px;
+        margin: auto;
+        font-size: 19px;
+    }
+
+    /* CEO */
+    .ceo {
+        text-align: center;
+    }
+
+    .ceo-box {
+        max-width: 500px;
+        margin: auto;
+        background: white;
+        padding: 35px;
+        border-radius: 25px;
+        box-shadow: 0 5px 20px rgba(0, 90, 160, 0.1);
+        text-align: center;
+    }
+
+    .ceo-avatar {
+        width: 130px;
+        height: 130px;
+        margin: auto;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #0077cc, #4fc3f7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 60px;
+    }
+
+    .ceo-box h3 {
+        margin-top: 15px;
+        font-size: 25px;
+        color: #0066cc;
+    }
+
+    /* STORY */
+    .story {
+        max-width: 900px;
+        margin: auto;
+        font-size: 18px;
+    }
+
+    /* CREATORS */
+    .creator-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 25px;
+    }
+
+    .creator {
+        background: white;
+        padding: 30px;
+        text-align: center;
+        border-radius: 20px;
+        box-shadow: 0 5px 18px rgba(0, 90, 160, 0.08);
+    }
+
+    .creator-icon {
+        font-size: 55px;
+        margin-bottom: 15px;
+    }
+
+    .creator h3 {
+        color: #0077cc;
+    }
+
+    /* SHOP */
+    .shop-controls {
+        text-align: center;
+        margin-bottom: 35px;
+    }
+
+    #search {
+        width: min(600px, 90%);
+        padding: 15px 20px;
+        border: 2px solid #b9e3ff;
+        border-radius: 30px;
+        font-size: 16px;
+        outline: none;
+    }
+
+    #search:focus {
+        border-color: #0077cc;
+    }
+
+    .filters {
+        margin-top: 20px;
+    }
+
+    .filter-btn {
+        border: none;
+        background: #dff2ff;
+        color: #005b99;
+        padding: 10px 18px;
+        margin: 5px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+        background: #0077cc;
+        color: white;
+    }
+
+    .products {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 25px;
+    }
+
+    .product {
+        background: white;
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 90, 160, 0.08);
+        transition: 0.3s;
+        position: relative;
+    }
+
+    .product:hover {
+        transform: translateY(-7px);
+        box-shadow: 0 12px 28px rgba(0, 90, 160, 0.15);
+    }
+
+    .featured-badge {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: #0077cc;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: bold;
+        z-index: 2;
+    }
+
+    .product-image {
+        height: 190px;
+        background: #e8f6ff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .emoji-placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        font-size: 70px;
+    }
+
+    .product-content {
+        padding: 22px;
+    }
+
+    .product-content h3 {
+        margin-bottom: 8px;
+        color: #26364a;
+    }
+
+    .category {
+        color: #0077cc;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .product-content p {
+        font-size: 14px;
+        color: #667788;
+        margin-bottom: 15px;
+    }
+
+    .product-buttons {
+        display: flex;
+        gap: 8px;
+    }
+
+    .btn {
+        border: none;
+        padding: 11px 15px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.2s;
+    }
+
+    .btn-primary {
+        background: #0077cc;
+        color: white;
+        flex: 1;
+    }
+
+    .btn-primary:hover {
+        background: #005fa3;
+    }
+
+    .btn-secondary {
+        background: #dff2ff;
+        color: #0077cc;
+    }
+
+    /* FEATURED */
+    .featured-section {
+        background: #eaf7ff;
+    }
+
+    /* CART */
+    .cart-box {
+        max-width: 900px;
+        margin: auto;
+    }
+
+    .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+        border-bottom: 1px solid #e2edf5;
+        gap: 15px;
+    }
+
+    .cart-item-info {
+        flex: 1;
+    }
+
+    .quantity {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .quantity button {
+        border: none;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #dff2ff;
+        color: #0066aa;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .remove-btn {
+        border: none;
+        background: transparent;
+        color: #e74c3c;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .cart-empty {
+        text-align: center;
+        padding: 25px;
+        color: #777;
+    }
+
+    .clear-cart {
+        margin-top: 20px;
+        background: #455a64;
+        color: white;
+    }
+
+    /* CHECKOUT */
+    .checkout-box {
+        max-width: 800px;
+        margin: auto;
+    }
+
+    form {
+        display: grid;
+        gap: 15px;
+    }
+
+    input,
+    textarea,
+    select {
+        width: 100%;
+        padding: 14px;
+        border: 1px solid #cbddea;
+        border-radius: 12px;
+        font-size: 15px;
+        font-family: inherit;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+        outline: none;
+        border-color: #0077cc;
+        box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.1);
+    }
+
+    textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    .payment-options {
+        display: grid;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .payment-option {
+        background: #eef9ff;
+        padding: 15px;
+        border-radius: 12px;
+        cursor: pointer;
+    }
+
+    .payment-option input {
+        width: auto;
+        margin-right: 8px;
+    }
+
+    .send-btn {
+        background: #0077cc;
+        color: white;
+        padding: 15px;
+        border: none;
+        border-radius: 30px;
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .send-btn:hover {
+        background: #005fa3;
+    }
+
+    /* CONFIRMATION */
+    .confirmation {
+        background: #eaf7ff;
+        border: 2px solid #8bd5ff;
+        padding: 25px;
+        border-radius: 18px;
+        margin-top: 25px;
+    }
+
+    .confirmation h3 {
+        color: #0077cc;
+    }
+
+    /* INSTAGRAM */
+    .instagram {
+        text-align: center;
+        background: linear-gradient(135deg, #005bea, #00c6fb);
+        color: white;
+        border-radius: 25px;
+        padding: 55px 20px;
+    }
+
+    .instagram a {
+        display: inline-block;
+        margin-top: 20px;
+        background: white;
+        color: #0066cc;
+        padding: 14px 25px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .instagram a:hover {
+        background: #eaf7ff;
+    }
+
+    /* TESTIMONIALS */
+    .testimonial-box {
+        text-align: center;
+        max-width: 850px;
+        margin: auto;
+    }
+
+    .feedback-note {
+        background: #eef9ff;
+        padding: 25px;
+        border-radius: 18px;
+        margin-bottom: 25px;
+    }
+
+    /* FAQ */
+    .faq {
+        max-width: 900px;
+        margin: auto;
+    }
+
+    details {
+        background: white;
+        padding: 20px;
+        margin-bottom: 12px;
+        border-radius: 15px;
+        box-shadow: 0 3px 12px rgba(0, 90, 160, 0.06);
+    }
+
+    summary {
+        cursor: pointer;
+        font-weight: bold;
+        color: #0077cc;
+    }
+
+    /* CONTACT */
+    .contact-box {
+        max-width: 700px;
+        margin: auto;
+    }
+
+    /* TOAST */
+    #toast {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        background: #0066cc;
+        color: white;
+        padding: 15px 22px;
+        border-radius: 30px;
+        display: none;
+        z-index: 2000;
+    }
+
+    /* MODAL */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 3000;
+        inset: 0;
+        background: rgba(0, 35, 70, 0.65);
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .modal-content {
+        background: white;
+        max-width: 550px;
+        width: 100%;
+        padding: 35px;
+        border-radius: 25px;
+        position: relative;
+    }
+
+    .close-modal {
+        position: absolute;
+        right: 20px;
+        top: 15px;
+        border: none;
+        background: transparent;
+        color: #0077cc;
+        font-size: 30px;
+        cursor: pointer;
+    }
+
+    /* FOOTER */
+    footer {
+        background: #082b49;
+        color: white;
+        text-align: center;
+        padding: 35px 20px;
+    }
+
+    footer a {
+        color: #58c7ff;
+        text-decoration: none;
+    }
+
+    /* BACK TO TOP */
+    #topBtn {
+        position: fixed;
+        right: 20px;
+        bottom: 80px;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        border: none;
+        background: #0077cc;
+        color: white;
+        cursor: pointer;
+        font-size: 20px;
+        display: none;
+        z-index: 1000;
+    }
+
+    @media (max-width: 600px) {
         header h1 {
-            font-size: 52px;
-            margin-bottom: 15px;
-            letter-spacing: 4px;
+            font-size: 40px;
         }
 
-        header p {
-            font-size: 20px;
-            max-width: 800px;
-            margin: auto;
-            line-height: 1.7;
-        }
-
-        .header-emoji {
-            font-size: 45px;
-            margin-bottom: 15px;
-        }
-
-        /* ================= NAVIGATION ================= */
-
-        nav {
-            background: white;
-            padding: 16px;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.10);
-        }
-
-        nav a {
-            color: #1f6f8b;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 5px 12px;
-            display: inline-block;
-        }
-
-        nav a:hover {
-            color: #d05a8a;
-        }
-
-        /* ================= CONTAINER ================= */
-
-        .container {
-            max-width: 1150px;
-            margin: 45px auto;
-            padding: 20px;
-        }
-
-        /* ================= CARDS ================= */
-
-        .card {
-            background: white;
-            padding: 35px;
-            border-radius: 20px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
-            margin-bottom: 35px;
-        }
-
-        h2 {
-            color: #1f6f8b;
-            margin-bottom: 18px;
-            font-size: 31px;
-        }
-
-        p {
-            line-height: 1.7;
-        }
-
-        .section-intro {
-            margin-bottom: 28px;
-            color: #555;
-        }
-
-        /* ================= MISSION ================= */
-
-        .mission-box {
-            text-align: center;
-        }
-
-        .mission-icon {
-            font-size: 45px;
-            margin-bottom: 15px;
-        }
-
-        /* ================= CEO ================= */
-
-        .ceo-section {
-            display: flex;
-            align-items: center;
-            gap: 45px;
-            flex-wrap: wrap;
-        }
-
-        .ceo-image {
-            width: 330px;
-            height: 330px;
-            object-fit: cover;
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        .ceo-info {
-            flex: 1;
-            min-width: 280px;
-        }
-
-        .ceo-label {
-            color: #1f6f8b;
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .ceo-name {
-            font-size: 36px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .ceo-message {
-            color: #555;
-            line-height: 1.8;
-        }
-
-        /* ================= PRODUCTS ================= */
-
-        .products {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .product {
-            background: white;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.09);
-            transition: 0.25s;
-            border: 1px solid #eee;
-        }
-
-        .product:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 10px 28px rgba(0,0,0,0.13);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .product-emoji {
-            height: 220px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #eef7fa;
-            font-size: 80px;
-        }
-
-        .product-content {
-            padding: 22px;
-        }
-
-        .product-content h3 {
-            color: #1f6f8b;
-            font-size: 21px;
-            margin-bottom: 9px;
-        }
-
-        .product-description {
-            color: #666;
-            font-size: 15px;
-            margin-bottom: 12px;
-        }
-
-        .made-location {
-            font-size: 14px;
-            color: #777;
-            margin-bottom: 8px;
-        }
-
-        .instagram {
-            display: inline-block;
-            margin-bottom: 18px;
-            color: #c13584;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .instagram:hover {
-            text-decoration: underline;
-        }
-
-        .add-cart {
-            width: 100%;
-            padding: 13px;
-            border: none;
-            border-radius: 9px;
-            background: #1f6f8b;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .add-cart:hover {
-            background: #15566d;
-        }
-
-        /* ================= CART ================= */
-
-        .cart-box {
-            background: #eef7fa;
-            border: 2px solid #d4eaf0;
-            padding: 25px;
-            border-radius: 15px;
+        section {
+            padding: 50px 5%;
         }
 
         .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-            padding: 16px 0;
-            border-bottom: 1px solid #ddd;
+            flex-direction: column;
+            align-items: flex-start;
         }
-
-        .cart-item:last-child {
-            border-bottom: none;
-        }
-
-        .cart-item-name {
-            font-weight: bold;
-        }
-
-        .quantity-controls {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .quantity-controls button {
-            width: 32px;
-            height: 32px;
-            border: none;
-            border-radius: 6px;
-            background: #1f6f8b;
-            color: white;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .remove-button {
-            border: none;
-            background: #d9534f;
-            color: white;
-            padding: 7px 10px;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        .cart-total {
-            margin-top: 20px;
-            font-size: 21px;
-            font-weight: bold;
-            text-align: right;
-        }
-
-        .empty-cart {
-            color: #777;
-            text-align: center;
-            padding: 15px;
-        }
-
-        .checkout-button,
-        .send-button {
-            margin-top: 20px;
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 9px;
-            background: #1f6f8b;
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .checkout-button:hover,
-        .send-button:hover {
-            background: #15566d;
-        }
-
-        /* ================= CHECKOUT ================= */
-
-        form {
-            margin-top: 25px;
-        }
-
-        label {
-            display: block;
-            margin: 15px 0 7px;
-            font-weight: bold;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            padding: 14px;
-            border: 1px solid #ccc;
-            border-radius: 9px;
-            font-size: 16px;
-            font-family: inherit;
-        }
-
-        textarea {
-            min-height: 140px;
-            resize: vertical;
-        }
-
-        /* ================= PAYMENT ================= */
-
-        .payment-options {
-            margin-top: 15px;
-            display: grid;
-            gap: 12px;
-        }
-
-        .payment-option {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: #f7f9fa;
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 9px;
-            cursor: pointer;
-        }
-
-        .payment-option input {
-            width: auto;
-        }
-
-        .payment-note {
-            background: #fff8e6;
-            border-left: 5px solid #e0a800;
-            padding: 15px;
-            margin-top: 15px;
-            border-radius: 5px;
-            line-height: 1.6;
-        }
-
-        /* ================= CONTACT ================= */
-
-        .contact-icon {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
-
-        /* ================= FOOTER ================= */
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            background: #183f4d;
-            color: white;
-            margin-top: 50px;
-        }
-
-        footer p {
-            margin-bottom: 8px;
-        }
-
-        .footer-heart {
-            color: #ff6b81;
-        }
-
-        /* ================= MOBILE ================= */
-
-        @media (max-width: 850px) {
-
-            .products {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-
-            header {
-                padding: 55px 20px;
-            }
-
-            header h1 {
-                font-size: 36px;
-            }
-
-            header p {
-                font-size: 17px;
-            }
-
-            nav a {
-                margin: 5px 7px;
-                font-size: 14px;
-            }
-
-            .card {
-                padding: 25px 20px;
-            }
-
-            .ceo-section {
-                text-align: center;
-                justify-content: center;
-            }
-
-            .ceo-image {
-                width: 250px;
-                height: 250px;
-            }
-
-            .ceo-name {
-                font-size: 29px;
-            }
-
-            .products {
-                grid-template-columns: 1fr;
-            }
-
-            .product-image,
-            .product-emoji {
-                height: 280px;
-            }
-
-            .cart-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-
-    </style>
-</head>
-
-
-<body>
-
-
-<!-- ================= HEADER ================= -->
-
-<header>
-
-    <div class="header-emoji">
-        ❤️ ♿ 🤝
-    </div>
-
-    <h1>WE ARE ABLE</h1>
-
-    <p>
-        Empowering people with disabilities by providing
-        opportunities, skills and sources of income.
-    </p>
-
-</header>
-
-
-<!-- ================= NAVIGATION ================= -->
-
-<nav>
-
-    <a href="#mission">🌟 Mission</a>
-
-    <a href="#ceo">👤 CEO</a>
-
-    <a href="#products">🛍️ Products</a>
-
-    <a href="#cart">🛒 Cart</a>
-
-    <a href="#checkout">💳 Checkout</a>
-
-    <a href="#contact">📩 Contact</a>
-
-</nav>
-
-
-<div class="container">
-
-
-<!-- ================= MISSION ================= -->
-
-<section class="card mission-box" id="mission">
-
-    <div class="mission-icon">
-        🌟
-    </div>
-
-    <h2>Our Mission</h2>
-
-    <p>
-        We believe that everyone has abilities, talents and
-        something valuable to contribute. Our goal is to help
-        people with disabilities develop useful skills and
-        create opportunities to earn an income through their
-        own products and talents.
-    </p>
-
-    <br>
-
-    <p>
-        ❤️ <strong>Different abilities. Equal opportunities.</strong>
-    </p>
-
-</section>
-
-
-<!-- ================= CEO ================= -->
-
-<section class="card" id="ceo">
-
-    <div class="ceo-section">
-
-        <img
-            src="ceo-hasan.jpg"
-            alt="Hasan Awwad - CEO of WE ARE ABLE"
-            class="ceo-image"
-        >
-
-        <div class="ceo-info">
-
-            <div class="ceo-label">
-                👔 CEO OF WE ARE ABLE
-            </div>
-
-            <div class="ceo-name">
-                Hasan Awwad
-            </div>
-
-            <p class="ceo-message">
-
-                Welcome to <strong>WE ARE ABLE</strong> ❤️
-
-                <br><br>
-
-                Our vision is to create opportunities where
-                talents can become skills, skills can become
-                products, and products can become sources of
-                income.
-
-                <br><br>
-
-                Together, we can create a community where
-                everyone has the opportunity to show what
-                they are able to do. 🤝🌟
-
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= PRODUCTS ================= -->
-
-<section class="card" id="products">
-
-    <h2>🛍️ Our Handmade Products</h2>
-
-    <p class="section-intro">
-
-        Explore our handmade creations 🎨👜.
-        Every product represents creativity, effort and
-        opportunity. ❤️
-
-    </p>
-
-
-    <div class="products">
-
-
-        <!-- PRODUCT 1 -->
-
-        <div class="product">
-
-            <img
-                src="product-1.jpg"
-                alt="Handmade products"
-                class="product-image"
-            >
-
-            <div class="product-content">
-
-                <h3>🎨 Handmade Creations</h3>
-
-                <p class="product-description">
-                    Unique handmade creations made with
-                    creativity and care.
-                </p>
-
-                <p class="made-location">
-                    📍 Made in FarmVille Barouk
-                </p>
-
-                <a
-                    class="instagram"
-                    href="https://www.instagram.com/jomar.lb/"
-                    target="_blank"
-                >
-                    📸 Instagram: @Jomar.lb
-                </a>
-
-                <button
-                    class="add-cart"
-                    onclick="addToCart('Handmade Creations')"
-                >
-                    🛒 ADD TO CART
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- PRODUCT 2 -->
-
-        <div class="product">
-
-            <img
-                src="product-2.jpg"
-                alt="Handmade art and accessories"
-                class="product-image"
-            >
-
-            <div class="product-content">
-
-                <h3>🎨 Handmade Art & Accessories</h3>
-
-                <p class="product-description">
-                    Creative artwork and handmade accessories
-                    created with passion.
-                </p>
-
-                <p class="made-location">
-                    📍 Made in FarmVille Barouk
-                </p>
-
-                <a
-                    class="instagram"
-                    href="https://www.instagram.com/jomar.lb/"
-                    target="_blank"
-                >
-                    📸 Instagram: @Jomar.lb
-                </a>
-
-                <button
-                    class="add-cart"
-                    onclick="addToCart('Handmade Art & Accessories')"
-                >
-                    🛒 ADD TO CART
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- PRODUCT 3 -->
-
-        <div class="product">
-
-            <div class="product-emoji">
-                👜
-            </div>
-
-            <div class="product-content">
-
-                <h3>👜 Handmade Bags</h3>
-
-                <p class="product-description">
-                    Handmade bags designed with creativity
-                    and care.
-                </p>
-
-                <p class="made-location">
-                    📍 Made in FarmVille Barouk
-                </p>
-
-                <a
-                    class="instagram"
-                    href="https://www.instagram.com/jomar.lb/"
-                    target="_blank"
-                    class="instagram"
-                >
-                    📸 Instagram: @Jomar.lb
-                </a>
-
-                <button
-                    class="add-cart"
-                    onclick="addToCart('Handmade Bags')"
-                >
-                    🛒 ADD TO CART
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- PRODUCT 4 -->
-
-        <div class="product">
-
-            <div class="product-emoji">
-                👝
-            </div>
-
-            <div class="product-content">
-
-                <h3>👝 Handmade Pouches</h3>
-
-                <p class="product-description">
-                    Colorful handmade pouches for everyday use.
-                </p>
-
-                <p class="made-location">
-                    📍 Made in FarmVille Barouk
-                </p>
-
-                <a
-                    class="instagram"
-                    href="https://www.instagram.com/jomar.lb/"
-                    target="_blank"
-                    class="instagram"
-                >
-                    📸 Instagram: @Jomar.lb
-                </a>
-
-                <button
-                    class="add-cart"
-                    onclick="addToCart('Handmade Pouches')"
-                >
-                    🛒 ADD TO CART
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- PRODUCT 5 -->
-
-        <div class="product">
-
-            <div class="product-emoji">
-                📿
-            </div>
-
-            <div class="product-content">
-
-                <h3>📿 Handmade Bracelets</h3>
-
-                <p class="product-description">
-                    Handmade bracelets with colorful and
-                    creative designs.
-                </p>
-
-                <p class="made-location">
-                    📍 Made in FarmVille Barouk
-                </p>
-
-                <a
-                    class="instagram"
-                    href="https://www.instagram.com/jomar.lb/"
-                    target="_blank"
-                    class="instagram"
-                >
-                    📸 Instagram: @Jomar.lb
-                </a>
-
-                <button
-                    class="add-cart"
-                    onclick="addToCart('Handmade Bracelets')"
-                >
-                    🛒 ADD TO CART
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- PRODUCT 6 -->
-
-        <div class="product">
-
-            <div class="product-emoji">
-                💍
-            </div>
-
-            <div class="product-content">
-
-                <h3>💍 Handmade Accessories</h3>
-
-                <p class="product-description">
-                    Unique handmade accessories created with
-                    imagination and creativity.
-                </p>
-
-                <p class="made-location">
-                    📍 Made in FarmVille Barouk
-                </p>
-
-                <a
-                    class="instagram"
-                    href="https://www.instagram.com/jomar.lb/"
-                    target="_blank"
-                    class="instagram"
-                >
-                    📸 Instagram: @Jomar.lb
-                </a>
-
-                <button
-                    class="add-cart"
-                    onclick="addToCart('Handmade Accessories')"
-                >
-                    🛒 ADD TO CART
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- PRODUCT 7 -->
-
-        <div class="product">
-
-            <div class="product-emoji">
-                ☕
-            </div>
-
-            <div class="product-content">
-
-                <h3>☕ Handmade Mugs</h3>
-
-                <p class="product-description">
-                    Creative handmade mugs decorated with
-                    unique designs.
-                </p>
-
-                <p class="made-location">
-                    📍 Made in FarmVille Barouk
-                </p>
-
-                <a
-                    class="instagram"
-                    href="https://www.instagram.com/jomar.lb/"
-                    target="_blank"
-                    class="instagram"
-                >
-                    📸 Instagram: @Jomar.lb
-                </a>
-
-                <button
-                    class="add-cart"
-                    onclick="addToCart('Handmade Mugs')"
-                >
-                    🛒 ADD TO CART
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- PRODUCT 8 -->
-
-        <div class="product">
-
-            <div class="product-emoji">
-                🔑
-            </div>
-
-            <div class="product-content">
-
-                <h3>🔑 Handmade Keychains</h3>
-
-                <p class="product-description">
-                    Small handmade creations perfect for
-                    personal use or gifts.
-                </p>
-
-                <p class="made-location">
-                    📍 Made in FarmVille Barouk
-                </p>
-
-                <a
-                    class="instagram"
-                    href="https://www.instagram.com/jomar.lb/"
-                    target="_blank"
-                    class="instagram"
-                >
-                    📸 Instagram: @Jomar.lb
-                </a>
-
-                <button
-                    class="add-cart"
-                    onclick="addToCart('Handmade Keychains')"
-                >
-                    🛒 ADD TO CART
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- PRODUCT 9 -->
-
-        <div class="product">
-
-            <div class="product-emoji">
-                📓
-            </div>
-
-            <div class="product-content">
-
-                <h3>📓 Handmade Notebooks</h3>
-
-                <p class="product-description">
-                    Handmade notebooks with artistic and
-                    colorful designs.
-                </p>
-
-                <p class="made-location">
-                    📍 Made in FarmVille Barouk
-                </p>
-
-                <a
-                    class="instagram"
-                    href="https://www.instagram.com/jomar.lb/"
-                    target="_blank"
-                    class="instagram"
-                >
-                    📸 Instagram: @Jomar.lb
-                </a>
-
-                <button
-                    class="add-cart"
-                    onclick="addToCart('Handmade Notebooks')"
-                >
-                    🛒 ADD TO CART
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- PRODUCT 10 -->
-
-        <div class="product">
-
-            <div class="product-emoji">
-                🖼️
-            </div>
-
-            <div class="product-content">
-
-                <h3>🖼️ Handmade Paintings</h3>
-
-                <p class="product-description">
-                    Original handmade artwork expressing
-                    creativity and imagination.
-                </p>
-
-                <p class="made-location">
-                    📍 Made in FarmVille Barouk
-                </p>
-
-                <a
-                    class="instagram"
-                    href="https://www.instagram.com/jomar.lb/"
-                    target="_blank"
-                    class="instagram"
-                >
-                    📸 Instagram: @Jomar.lb
-                </a>
-
-                <button
-                    class="add-cart"
-                    onclick="addToCart('Handmade Paintings')"
-                >
-                    🛒 ADD TO CART
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- PRODUCT 11 -->
-
-        <div class="product">
-
-            <div class="product-emoji">
-                🎁
-            </div>
-
-            <div class="product-content">
-
-                <h3>🎁 Handmade Gift Items</h3>
-
-                <p class="product-description">
-                    Special handmade creations suitable for
-                    gifts and special occasions.
-                </p>
-
-                <p class="made-location">
-                    📍 Made in FarmVille Barouk
-                </p>
-
-                <a
-                    class="instagram"
-                    href="https://www.instagram.com/jomar.lb/"
-                    target="_blank"
-                    class="instagram"
-                >
-                    📸 Instagram: @Jomar.lb
-                </a>
-
-                <button
-                    class="add-cart"
-                    onclick="addToCart('Handmade Gift Items')"
-                >
-                    🛒 ADD TO CART
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- PRODUCT 12 -->
-
-        <div class="product">
-
-            <div class="product-emoji">
-                🌟
-            </div>
-
-            <div class="product-content">
-
-                <h3>🌟 Other Handmade Creations</h3>
-
-                <p class="product-description">
-                    Discover more unique handmade products
-                    created with talent and dedication.
-                </p>
-
-                <p class="made-location">
-                    📍 Made in FarmVille Barouk
-                </p>
-
-                <a
-                    class="instagram"
-                    href="https://www.instagram.com/jomar.lb/"
-                    target="_blank"
-                    class="instagram"
-                >
-                    📸 Instagram: @Jomar.lb
-                </a>
-
-                <button
-                    class="add-cart"
-                    onclick="addToCart('Other Handmade Creations')"
-                >
-                    🛒 ADD TO CART
-                </button>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- ================= CART ================= -->
-
-<section class="card" id="cart">
-
-    <h2>🛒 Your Shopping Cart</h2>
-
-    <p class="section-intro">
-        Review the products you selected before checking out. ❤️
-    </p>
-
-    <div class="cart-box">
-
-        <div id="cartItems">
-
-            <div class="empty-cart">
-                🛒 Your cart is currently empty.
-            </div>
-
-        </div>
-
-        <div class="cart-total">
-
-            🛍️ Items in cart:
-            <span id="cartCount">0</span>
-
-        </div>
-
-    </div>
-
-    <button
-        class="checkout-button"
-        onclick="goToCheckout()"
-    >
-        💳 PROCEED TO CHECKOUT
-    </button>
-
-</section>
-
-
-<!-- ================= CHECKOUT ================= -->
-
-<section class="card" id="checkout">
-
-    <h2>💳 Checkout</h2>
-
-    <p>
-        Please enter your information below to send your
-        order request to <strong>WE ARE ABLE</strong>. ❤️
-    </p>
-
-
-    <form
-        id="checkoutForm"
-        action="https://formsubmit.co/Hassanawwed50@gmail.com"
-        method="POST"
-        onsubmit="prepareOrder()"
-    >
-
-        <!-- EMAIL SETTINGS -->
-
-        <input
-            type="hidden"
-            name="_subject"
-            value="WE ARE ABLE - New Product Order"
-        >
-
-        <input
-            type="hidden"
-            name="_template"
-            value="table"
-        >
-
-        <input
-            type="hidden"
-            name="_captcha"
-            value="false"
-        >
-
-
-        <!-- ORDER -->
-
-        <input
-            type="hidden"
-            id="orderDetails"
-            name="Order"
-            value=""
-        >
-
-
-        <label for="customerName">
-            👤 Your Name
-        </label>
-
-        <input
-            id="customerName"
-            type="text"
-            name="name"
-            placeholder="Enter your name"
-            required
-        >
-
-
-        <label for="customerEmail">
-            📧 Your Email
-        </label>
-
-        <input
-            id="customerEmail"
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            required
-        >
-
-
-        <label for="phone">
-            📱 Phone Number
-        </label>
-
-        <input
-            id="phone"
-            type="tel"
-            name="phone"
-            placeholder="Enter your phone number"
-            required
-        >
-
-
-        <label for="address">
-            📍 Delivery Address
-        </label>
-
-        <textarea
-            id="address"
-            name="address"
-            placeholder="Enter your delivery address"
-            required
-        ></textarea>
-
-
-        <!-- PAYMENT -->
-
-        <label>
-            💰 Payment Choice
-        </label>
-
-        <div class="payment-options">
-
-
-            <label class="payment-option">
-
-                <input
-                    type="radio"
-                    name="payment"
-                    value="Wish"
-                    required
-                >
-
-                💳 <strong>Wish</strong>
-
-            </label>
-
-
-            <label class="payment-option">
-
-                <input
-                    type="radio"
-                    name="payment"
-                    value="Cash on Delivery"
-                >
-
-                💵 <strong>Cash on Delivery</strong>
-
-            </label>
-
-
-            <label class="payment-option">
-
-                <input
-                    type="radio"
-                    name="payment"
-                    value="Other / Contact Me"
-                >
-
-                📞 <strong>Other / Contact Me</strong>
-
-            </label>
-
-        </div>
-
-
-        <div class="payment-note">
-
-            💳 <strong>Wish Payment</strong>
-
-            <br><br>
-
-            If you choose Wish, your order will be sent to
-            WE ARE ABLE. We can then contact you with the
-            appropriate payment instructions.
-
-            <br><br>
-
-            🔒 For your safety, never enter your card number,
-            PIN or password into this website.
-
-        </div>
-
-
-        <label for="orderMessage">
-            💬 Additional Message
-        </label>
-
-        <textarea
-            id="orderMessage"
-            name="message"
-            placeholder="Any additional information about your order..."
-        ></textarea>
-
-
-        <button
-            class="send-button"
-            type="submit"
-        >
-            ❤️ SEND ORDER
-        </button>
-
-    </form>
-
-</section>
-
-
-<!-- ================= CONTACT ================= -->
-
-<section class="card" id="contact">
-
-    <div class="contact-icon">
-        📩
-    </div>
-
-    <h2>Get Involved</h2>
-
-    <p>
-        Have an idea, want to support our project, or would
-        like to share your thoughts? Send us a message below.
-        🤝❤️
-    </p>
-
-
-    <!-- ORIGINAL MESSAGE FORM -->
-
-    <form
-        action="https://formsubmit.co/Hassanawwed50@gmail.com"
-        method="POST"
-    >
-
-        <input
-            type="hidden"
-            name="_subject"
-            value="WE ARE ABLE - New Message"
-        >
-
-        <input
-            type="hidden"
-            name="_template"
-            value="table"
-        >
-
-        <input
-            type="text"
-            name="_honey"
-            style="display:none"
-        >
-
-
-        <label for="name">
-            👤 Your Name
-        </label>
-
-        <input
-            id="name"
-            type="text"
-            name="name"
-            placeholder="Enter your name"
-            required
-        >
-
-
-        <label for="email">
-            📧 Your Email
-        </label>
-
-        <input
-            id="email"
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            required
-        >
-
-
-        <label for="message">
-            💬 Your Message
-        </label>
-
-        <textarea
-            id="message"
-            name="message"
-            placeholder="Write your message here..."
-            required
-        ></textarea>
-
-
-        <button
-            class="send-button"
-            type="submit"
-        >
-            📩 SEND MESSAGE
-        </button>
-
-    </form>
-
-</section>
-
-
-</div>
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer>
-
-    <p>
-        ❤️ © 2026 WE ARE ABLE
-    </p>
-
-    <p>
-        Empowering abilities. Creating opportunities. 🤝
-    </p>
-
-    <p>
-        📸 Instagram: @Jomar.lb
-    </p>
-
-</footer>
-
-
-<!-- ================= JAVASCRIPT ================= -->
-
-<script>
-
-    let cart = [];
-
-
-    /* ================= ADD TO CART ================= */
-
-    function addToCart(productName) {
-
-        const existingProduct =
-            cart.find(item => item.name === productName);
-
-
-        if (existingProduct) {
-
-            existingProduct.quantity++;
-
-        } else {
-
-            cart.push({
-                name: productName,
-                quantity: 1
-            });
-
-        }
-
-
-        updateCart();
-
-
-        alert(
-            "✅ " +
-            productName +
-            " was added to your cart!"
-        );
-
     }
-
-
-    /* ================= UPDATE CART ================= */
-
-    function updateCart() {
-
-        const cartItems =
-            document.getElementById("cartItems");
-
-        const cartCount =
-            document.getElementById("cartCount");
-
-
-        if (cart.length === 0) {
-
-            cartItems.innerHTML = `
-                <div class="empty-cart">
-                    🛒 Your cart is currently empty.
-                </div>
-            `;
-
-            cartCount.textContent = "0";
-
-            return;
-        }
-
-
-        let totalItems = 0;
-
-
-        cartItems.innerHTML = "";
-
-
-        cart.forEach((item, index) => {
-
-            totalItems += item.quantity;
-
-
-            const cartItem =
-                document.createElement("div");
-
-            cartItem.className = "cart-item";
-
-
-            cartItem.innerHTML = `
-
-                <div>
-
-                    <div class="cart-item-name">
-                        🛍️ ${item.name}
-                    </div>
-
-                </div>
-
-
-                <div class="quantity-controls">
-
-                    <button
-                        onclick="decreaseQuantity(${index})"
-                    >
-                        −
-                    </button>
-
-
-                    <span>
-                        ${item.quantity}
-                    </span>
-
-
-                    <button
-                        onclick="increaseQuantity(${index})"
-                    >
-                        +
-                    </button>
-
-
-                    <button
-                        class="remove-button"
-                        onclick="removeFromCart(${index})"
-                    >
-                        🗑️
-                    </button>
-
-                </div>
-
-            `;
-
-
-            cartItems.appendChild(cartItem);
-
-        });
-
-
-        cartCount.textContent = totalItems;
-
-    }
-
-
-    /* ================= INCREASE ================= */
-
-    function increaseQuantity(index) {
-
-        cart[index].quantity++;
-
-        updateCart();
-
-    }
-
-
-    /* ================= DECREASE ================= */
-
-    function decreaseQuantity(index) {
-
-        if (cart[index].quantity > 1) {
-
-            cart[index].quantity--;
-
-        } else {
-
-            cart.splice(index, 1);
-
-        }
-
-        updateCart();
-
-    }
-
-
-    /* ================= REMOVE ================= */
-
-    function removeFromCart(index) {
-
-        cart.splice(index, 1);
-
-        updateCart();
-
-    }
-
-
-    /* ================= CHECKOUT ================= */
-
-    function goToCheckout() {
-
-        if (cart.length === 0) {
-
-            alert(
-                "🛒 Your cart is empty. Please add a product first!"
-            );
-
-            return;
-
-        }
-
-
-        document
-            .getElementById("checkout")
-            .scrollIntoView({
-                behavior: "smooth"
-            });
-
-    }
-
-
-    /* ================= PREPARE ORDER ================= */
-
-    function prepareOrder() {
-
-        let orderText = "";
-
-
-        if (cart.length === 0) {
-
-            orderText =
-                "No products selected.";
-
-        } else {
-
-            cart.forEach(item => {
-
-                orderText +=
-                    "🛍️ " +
-                    item.name +
-                    " - Quantity: " +
-                    item.quantity +
-                    "\n";
-
-            });
-
-        }
-
-
-        document.getElementById(
-            "orderDetails"
-        ).value = orderText;
-
-    }
-
-
-    /* ================= INITIALIZE ================= */
-
-    updateCart();
-
-</script>
-
-
-</body>
-                    </html>
+        </style>
